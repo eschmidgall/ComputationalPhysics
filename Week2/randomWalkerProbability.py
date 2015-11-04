@@ -42,9 +42,13 @@ def runOneSimulation(num_walkers, initial_positions, num_steps):
         stepPosition = runStep(walkers)
     return stepPosition
 
-def plotResults(displaceVec, num_steps):
+def plotResults(displaceVec, num_steps, num_walkers, num_sims):
     numBins = len(range(-num_steps, num_steps+1))
     n,bins,patches = pylab.hist(displaceVec,numBins, normed = 1, histtype = 'stepfilled')
+    pylab.xlim([-num_steps, num_steps])
+    pylab.xlabel('Net Dispalcement (steps from origin)')
+    pylab.ylabel('Probability')
+    pylab.title('Probability for N='+str(num_steps)+' and '+str(num_walkers)+' walkers, '+str(num_sims)+' trials')
     pylab.show()
     
 def main(num_sims,num_walkers, num_steps, initial_positions):
@@ -53,7 +57,7 @@ def main(num_sims,num_walkers, num_steps, initial_positions):
         finalPosition = runOneSimulation(num_walkers, initial_positions, num_steps)
         netDisplace.append(finalPosition)
     displaceVec = [item for sublist in netDisplace for item in sublist]
-    plotResults(displaceVec, num_steps)
+    plotResults(displaceVec, num_steps, num_walkers, num_sims)
 
 if __name__=="__main__":
     num_sims = int(sys.argv[1])
