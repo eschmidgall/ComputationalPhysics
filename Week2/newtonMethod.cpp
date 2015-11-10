@@ -3,6 +3,11 @@
 #include <math.h>
 using namespace std;
 
+float roundf(float x)
+{
+   return x >= 0.0f ? floorf(x + 0.5f) : ceilf(x - 0.5f);
+}
+
 double function(double pos){
 	double funcVal;
 	funcVal = pow(pos,2.0)-5.0;
@@ -25,25 +30,44 @@ double nextStep(double oldPos){
 	return newPos; 
 }
 
+int getPrecision(double thresh){
+	int precision; 
+	double roundVal; 
+	roundVal = roundf(thresh);
+	precision = 0; 
+	while(abs(roundVal-thresh)>1E-10){
+		roundVal = roundf(thresh*10.0); 
+		thresh = thresh*10.0; 
+		precision++; 
+	}
+	printf("Threshold precision is %d \n", precision); 
+	return precision; 
+}
+		
+
 int main(){
 	double val; 
 	double thresh;
 	bool done; 
 	double testVal; 
 	int counter; 
+	int precision; 
+	
 	cout<<"Newton's method for x^2-5. Enter a starting value. "<<endl;
 	cin>>val; 
 	cout<<"Enter a threshold value for accuracy. "<<endl; 
 	cin>>thresh; 
+	precision = getPrecision(thresh); 
 	done = false;
 	counter = 0; 
 	while(! done){
 		val = nextStep(val); 
-		cout<<"x = "<<val<<endl; 
+		printf("x= %12.*f \n",precision,val); 
 		testVal = fabs(val-sqrt(5.0)); 
 		if(testVal<thresh){
 			done = true; 
-			cout<<"Final value for x = "<<val<<endl; 
+			printf("Final value for x = %12.*f \n",precision, val); 
+			printf("For reference, sqrt(5.0) is %12.*f \n", precision, sqrt(5.0));
 			system("pause"); 
 			return 0; 
 		}
