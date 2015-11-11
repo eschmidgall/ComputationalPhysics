@@ -32,15 +32,7 @@ double nextStep(double oldPos){
 
 int getPrecision(double thresh){
 	int precision; 
-	double roundVal; 
-	roundVal = roundf(thresh);
-	precision = 0; 
-	while(abs(roundVal-thresh)>1E-10){
-		roundVal = roundf(thresh*10.0); 
-		thresh = thresh*10.0; 
-		precision++; 
-	}
-	printf("Threshold precision is %d \n", precision); 
+	precision = abs(log10(thresh)) ; 
 	return precision; 
 }
 		
@@ -58,6 +50,7 @@ int main(){
 	cout<<"Enter a threshold value for accuracy. "<<endl; 
 	cin>>thresh; 
 	precision = getPrecision(thresh); 
+	cout<<"Precision is "<<precision<<endl;
 	done = false;
 	counter = 0; 
 	while(! done){
