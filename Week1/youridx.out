@@ -1,0 +1,24 @@
+     1.0     0.0     1.0     1.0     1.0
+     0.0     0.0     1.0     1.0     1.0     0.0     1.0
+     0.0     1.0
+     1.0     1.0
+     0.0     1.0     0.0
+     0.0     0.0     0.0
+     1.0
+     1.0     1.0     1.0     1.0
+     1.0     1.0
+     1.0     1.0
+    0
+ cs=       1.0 prog=       0.0 home=       1.0course=       1.0offlab=       1.0
+ fortran=       0.0 pascal=       0.0 basic=       1.0
+ c=       1.0 algol=       1.0 pl1=       0.0 python=       1.0
+  java=     0.0 html=     1.0
+ unix=       1.0 windows=       1.0
+ vi=         0.0 emacs=        1.0  unikedit=       0.0
+ mainf=      0.0
+ super=       0.0 par=       0.0
+ linux=     1.0
+ uemail=       1.0 email=       1.0
+ telnet=       1.0 web=       1.0
+ manual=       1.0 help=       1.0
+ tex=       1.0 word=       1.0
